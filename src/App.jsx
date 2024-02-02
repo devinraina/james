@@ -29,16 +29,27 @@ function App() {
       console.log('Hello Timeout! fetchdata')
         fetchData();
    }, 1000);
-   setTimeout(() => {
-    console.log('Hello Timeout! notOccup')
-      notOccupied();
-    }, 60000);
+   watchGlob();
   };
+
+  function watchGlob(){
+    var temp_glob=count;
+    setTimeout(function(){
+      if(temp_glob == count){
+        console.log("temp == count")
+        notOccupied();
+      }
+      else{
+        notOccupied();
+      }
+    },60000)
+  }
 
   const notOccupied = async () => {
     setIsLoading(true);
     await updateF();
     setCount(res[0]?.tWash);
+    console.log("notO summoned")
     setTimeout(() => {
       console.log('Hello Timeout! fetchdata')
       fetchData();
@@ -74,6 +85,7 @@ function App() {
 
   return (
     <>
+      {count==='false'? <h3>Refresh Once Before Occupying.</h3>:<div></div>}&nbsp; 
       {isLoading ? <LoadingSpinner /> : donothing}<br />
     </>
   );
