@@ -76,7 +76,7 @@ function App() {
   const donothing=(
     <div>
       <div className='divt'>
-        Toilet Occupied {`${count}`}<br></br><br />
+        Toilet is{`${count == 'false'? ' not ':' '}`}Occupied.<br></br><br />
         </div>
          {count==='false'? <button onClick={occupied}>Occupy</button>:<div></div>}&nbsp; 
         <button onClick={refresh}>Refresh Status</button>
