@@ -2,10 +2,11 @@ import { getDocs, collection, runTransaction, doc,} from "firebase/firestore";
 import { getDb, db } from "./db.mjs"
 
 const collection_name = "status"
-const doc_refs = await getDocs(collection(getDb(), collection_name))
+
 //
 
 export const findAll = async () => {
+    const doc_refs = await getDocs(collection(getDb(), collection_name))
     const res = []
     console.log(res)
 
