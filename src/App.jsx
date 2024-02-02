@@ -23,14 +23,13 @@ function App() {
 
   const occupied = async () => {
     setIsLoading(true);
-    
     await updateT();
     setCount(res[0]?.tWash);
     setTimeout(() => {
       console.log('Hello Timeout! fetchdata')
       fetchData();
    }, 1000);
-   setTimeout(() => {
+    setInterval(() => {
     console.log('Hello Timeout! notOccup')
     notOccupied();
  }, 60000);
