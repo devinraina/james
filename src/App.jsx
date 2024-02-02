@@ -9,10 +9,11 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   
   const fetchData = async () => {
+    setIsLoading(false);
     const response = await findAll();
     setRes(response);
     setCount(response[0]?.tWash); 
-    setTimeout(setIsLoading(false),3000)// Optional chaining to handle potential undefined values
+    // Optional chaining to handle potential undefined values
   };
 
   useEffect(() => {
