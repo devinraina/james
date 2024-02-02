@@ -26,7 +26,7 @@ function App() {
    setTimeout(() => {
     console.log('Hello Timeout! notOccup')
     notOccup();
- }, 30000);
+ }, 60000);
   };
 
   const notOccup = async () => {
