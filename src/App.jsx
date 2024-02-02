@@ -21,7 +21,7 @@ function App() {
     fetchData();
   }, []);
 
-  const occup = async () => {
+  const occupied = async () => {
     setIsLoading(true);
     await updateT();
     setCount(res[0]?.tWash);
@@ -31,11 +31,11 @@ function App() {
    }, 1000);
    setTimeout(() => {
     console.log('Hello Timeout! notOccup')
-    notOccup();
+    notOccupied();
  }, 60000);
   };
 
-  const notOccup = async () => {
+  const notOccupied = async () => {
     setIsLoading(true);
     await updateF();
     setCount(res[0]?.tWash);
@@ -65,7 +65,7 @@ function App() {
       <div className='divt'>
         Toilet Occupied {`${count}`}<br></br><br />
         </div>
-        <button onClick={occup}>Occupied</button> &nbsp; 
+        <button onClick={occupied}>Occupied</button> &nbsp; 
         <button onClick={refresh}>Refresh Status</button>
       </div>
   );
