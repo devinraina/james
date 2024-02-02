@@ -23,6 +23,7 @@ function App() {
 
   const occupied = async () => {
     setIsLoading(true);
+    
     await updateT();
     setCount(res[0]?.tWash);
     setTimeout(() => {
@@ -65,10 +66,11 @@ function App() {
       <div className='divt'>
         Toilet Occupied {`${count}`}<br></br><br />
         </div>
-        <button onClick={occupied}>Occupied</button> &nbsp; 
+         {res[0]?.tWash==='false'? <button onClick={occupied}>Occupied</button>:<div></div>}&nbsp; 
         <button onClick={refresh}>Refresh Status</button>
       </div>
   );
+ 
 
 
   return (
