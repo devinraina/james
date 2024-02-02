@@ -9,8 +9,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   
   const fetchData = async () => {
-    setIsLoading(false);
+    
     const response = await findAll();
+    setIsLoading(false);
     setRes(response);
     setCount(response[0]?.tWash); 
     // Optional chaining to handle potential undefined values
@@ -46,7 +47,7 @@ function App() {
 
   const refresh= async ()=>{
     setIsLoading(true);
-    setTimeout( await fetchData(),1000)
+    setTimeout( await fetchData(),10000)
   }
 
  if(count === 'false')
@@ -64,7 +65,6 @@ function App() {
       <div className='divt'>
         Toilet Occupied {`${count}`}<br></br><br />
         </div>
-        
         <button onClick={occup}>Occupied</button> &nbsp; 
         <button onClick={refresh}>Refresh Status</button>
       </div>
