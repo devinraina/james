@@ -21,6 +21,8 @@ function App() {
     fetchData();
   }, []);
 
+  setInterval(fetchData(),5000);
+
   const occupied = async () => {
     setIsLoading(true);
     await updateT();
