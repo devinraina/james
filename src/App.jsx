@@ -65,7 +65,6 @@ function App() {
         </div>
         
         <button onClick={occup}>Occupied</button> &nbsp; 
-        <button onClick={notOccup}>Not Occupied</button> &nbsp; 
         <button onClick={refresh}>Refresh Status</button>
       </div>
   );
