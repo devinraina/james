@@ -27,12 +27,12 @@ function App() {
     setCount(res[0]?.tWash);
     setTimeout(() => {
       console.log('Hello Timeout! fetchdata')
-      fetchData();
+        fetchData();
    }, 1000);
-    setInterval(() => {
+   setTimeout(() => {
     console.log('Hello Timeout! notOccup')
-    notOccupied();
- }, 60000);
+      notOccupied();
+    }, 60000);
   };
 
   const notOccupied = async () => {
@@ -65,7 +65,7 @@ function App() {
       <div className='divt'>
         Toilet Occupied {`${count}`}<br></br><br />
         </div>
-         {res[0]?.tWash==='false'? <button onClick={occupied}>Occupied</button>:<div></div>}&nbsp; 
+         {count==='false'? <button onClick={occupied}>Occupy</button>:<div></div>}&nbsp; 
         <button onClick={refresh}>Refresh Status</button>
       </div>
   );
