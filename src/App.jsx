@@ -1,44 +1,42 @@
-import { useState, useEffect } from 'react'
-import { findAll, writeUserData } from '../src/services/status.mjs'
-import './App.css'
+import { useState, useEffect } from 'react';
+import { findAll, updateT, updateF } from '../src/services/status.mjs';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState();
-  console.log("count", count)
-  let arr;
+  const [count, setCount] = useState(0);
+  const [res, setRes] = useState([]);
+
   const fetchData = async () => {
-    let res = await findAll();
-    setCount(res[0].fWash);
-    console.log(res[0].bWash);
+    const response = await findAll();
+    setRes(response);
+    setCount(response[0]?.tWash); // Optional chaining to handle potential undefined values
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [count]);
+
+  const occup = async () => {
+    await updateT();
+    setCount(res[0]?.tWash);
+  };
+
+  const notOccup = async () => {
+    await updateF();
+    setCount(res[0]?.tWash);
+  };
+
+  console.log("count", count);
+
+  return (
+    <>
+      <div>
+        Toilet Occupied {`${count}`}
+        <button onClick={occup}>Occupied</button>
+        <button onClick={notOccup}>Not Occupied</button>
+      </div>
+    </>
+  );
 }
-useEffect(() => {
-  fetchData();
-}, []);
 
-async function occup(){
-    let res = await findAll();
-    setCount(res[0].tWash);
-}
-async function notOccup(){
-  let res = await findAll();
-  setCount(res[0].fWash);
-}
-
-
-
-return (
-
-
-    <><div>
-    Toilet Occupied {`${count}`}
-    <button onClick={occup}>Occupied</button>
-    <button onClick={notOccup}>Not Occupied</button>
-  </div>
-  
-  </>
-
-  )
-}
-
-
-export default App
+export default App;
